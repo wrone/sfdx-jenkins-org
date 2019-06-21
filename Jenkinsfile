@@ -7,7 +7,12 @@ node {
     def SERVER_KEY_CREDENTALS_ID=env.JWT_CRED_ID_DH // old val SERVER_KEY_CREDENTALS_ID
     def DEPLOYDIR='src'
     def TEST_LEVEL='RunLocalTests'
-
+	
+	// All possible SF test levels
+	// NoTestRun
+	// RunSpecifiedTests
+	// RunLocalTests
+	// RunAllTestsInOrg
 
     def toolbelt = tool 'toolbelt'
 
@@ -32,8 +37,15 @@ node {
         // -------------------------------------------------------------------------
 
         stage('Authorize to Salesforce') {
-            rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl https://test.salesforce.com --clientid ${SF_CONSUMER_KEY} --jwtkeyfile \"${server_key_file}\" --username ${SF_USERNAME} --setalias UAT"
-            if (rc != 0) {
+            
+			if (isUnix()) {
+				rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl https://test.salesforce.com --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias UAT"
+			}
+			else {
+				rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl https://test.salesforce.com --clientid ${SF_CONSUMER_KEY} --jwtkeyfile \"${server_key_file}\" --username ${SF_USERNAME} --setalias UAT"
+			}  
+			
+			if (rc != 0) {
                 error 'Salesforce org authorization failed.'
             }
         }
