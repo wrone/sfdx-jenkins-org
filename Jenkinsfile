@@ -48,9 +48,8 @@ node {
 			
 	 	input message: 'To what SF environment do you want to deploy?', 
 			ok: 'Proceed',
-           	parameters: [choice(choices: 'INT'), choice(choices: 'FULL'), choice(choices: 'PROD')]		
-		// --------------------------------
-		
+           	parameters: [choice(choices: 'INT', 'FULL', 'PROD'))]		
+		// --------------------------------	
 		
             
 			if (isUnix()) {
