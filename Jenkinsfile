@@ -44,6 +44,9 @@ node {
 		
 		// --------------------------------
 		input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
+			
+	 	input message: 'User input required', ok: 'Release!',
+            parameters: [choice(name: 'deployToSandbox', choices: 'INT/FULL/PROD', description: 'To what SF environment do you want to deploy?')]		
 		// --------------------------------
 		
 		
