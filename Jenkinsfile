@@ -43,10 +43,12 @@ node {
 		
 		
 		// --------------------------------
-		input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
+		input message: 'Do you want to approve the deploy in production?',
+			ok: 'Yes'
 			
-	 	input message: 'To what SF environment do you want to deploy?', ok: 'Proceed',
-           		 parameters: [choice(choices: 'INT/FULL/PROD')]		
+	 	input message: 'To what SF environment do you want to deploy?', 
+			ok: 'Proceed',
+           	parameters: [choice(choices: 'INT\FULL\PROD')]		
 		// --------------------------------
 		
 		
