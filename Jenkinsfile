@@ -14,8 +14,10 @@ node {
 	// RunLocalTests
 	// RunAllTestsInOrg
 	
+	println '========================================'
 	println credentials('sf_api_consumer_key')
 	println credentials('sf_login_pass')
+	println '========================================'
 
     def toolbelt = tool 'toolbelt'
 
