@@ -16,11 +16,6 @@ node {
 	
 	def SF_API_CONSUMER_KEY=credentials('id of credentils')
 	def SF_USER_LOGIN_PASS=credentials('id of credentils')
-	
-	println '========================================'
-	println SF_API_CONSUMER_KEY
-	println SF_USER_LOGIN_PASS
-	println '========================================'
 
     def toolbelt = tool 'toolbelt'
 
