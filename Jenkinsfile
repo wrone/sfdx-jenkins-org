@@ -42,29 +42,14 @@ node {
         stage('Authorize to Salesforce') {
 		
 		
-		// ----------------
-		
-		def userInput = true
-		def didTimeout = false
-		try {
-		    timeout(time: 15, unit: 'SECONDS') { // change to a convenient timeout for you
-			userInput = input(
-			id: 'Proceed1', message: 'Was this successful?', parameters: [
-			[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
+		// --------------------------------
+		userInput = input(
+			id: 'whereToDeploy', message: 'Do you want to deploy to Production environment?', parameters: [
+				[$class: 'BooleanParameterDefinition', defaultValue: false, description: '', 
+				 name: 'Yes']
 			])
-		    }
-		} catch(err) { // timeout reached or input false
-		    def user = err.getCauses()[0].getUser()
-		    if('SYSTEM' == user.toString()) { // SYSTEM means timeout.
-			didTimeout = true
-		    } else {
-			userInput = false
-			echo "Aborted by: [${user}]"
-		    }
 		}
-
-		
-		// ----------------
+		// --------------------------------
 		
 		
             
