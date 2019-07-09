@@ -48,7 +48,7 @@ node {
 			
 	 	input message: 'To what SF environment do you want to deploy?', 
 			ok: 'Proceed',
-           	parameters: [choice(choices: 'INT', 'FULL', 'PROD'))]		
+           	parameters: [choice(choices: 'INT,FULL,PROD'))]		
 		// --------------------------------	
 		
             
