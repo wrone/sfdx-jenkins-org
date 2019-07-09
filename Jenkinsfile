@@ -43,12 +43,7 @@ node {
 		
 		
 		// --------------------------------
-		userInput = input(
-			id: 'whereToDeploy', message: 'Do you want to deploy to Production environment?', parameters: [
-				[$class: 'BooleanParameterDefinition', defaultValue: false, description: '', 
-				 name: 'Yes']
-			])
-		}
+		input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
 		// --------------------------------
 		
 		
